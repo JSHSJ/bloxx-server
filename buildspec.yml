@@ -1,6 +1,9 @@
 version: 0.1
 
 phases:
+  install:
+    runtime-versions:
+      golang: 1.12
   build:
     commands:
       # Build our application
