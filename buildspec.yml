@@ -4,6 +4,8 @@ phases:
   install:
     runtime-versions:
       golang: 1.12
+    commands:
+      - go get -u ./...
   build:
     commands:
       # Build our application
