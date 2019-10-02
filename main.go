@@ -2,6 +2,7 @@ package main
 
 import (
 	"bloxxter/mockup-server/pkg/users"
+	"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -10,6 +11,9 @@ import (
 func main() {
 
 	users.SetupDatabase()
+
+	port := "8000"
+	port = os.Getenv("PORT")
 
 	e := echo.New()
 	// e.Use(middleware.Logger())
@@ -28,7 +32,7 @@ func main() {
 	e.POST("/checkout/sofortueberweisung", users.CheckoutWithSofortUeberweisung)
 	e.POST("/checkout/bitcoin", users.CheckoutWithBitcoin)
 
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 //TOKEN
