@@ -1,10 +1,16 @@
 version: 0.2
 
+env:
+  variables:
+    GO111MODULE: "on"
+    git-credential-helper: y
+
 phases:
   install:
+    runtime-versions:
+      golang: 1.13
     commands:
-      - echo "fetching files"
-      - echo $(which go)
+      - echo GOPATH - $GOPATH
       - go get -u ./...
   build:
     commands:
